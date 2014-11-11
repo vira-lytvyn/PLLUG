@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS tools: a bit about scaffolding </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../assets/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <img class="epam-logo" src="../assets/img/logo.png"/>
+        <h1>JS tools: a bit about scaffolding</h1>
+    </header>
+
+<!-- ================== Slides ================== -->
+    <textarea id="source">
+
+
+class: center, middle
+
+.title[
+Programming in Lviv Linux Users Group
+# JS tools: a bit about scaffolding
+]
+
+
+---
+
+
+# HTML5 Boilerplate
+
+.columns[.col-50[
+
+The web’s most popular front-end template.
+HTML5 Boilerplate helps you build fast, robust, and adaptable web apps or sites. Kick-start your project with the combined knowledge and effort of 100s of developers, all in one little package.
+
+- Analytics, icons, and more
+- Normalize.css and helpers
+- jQuery and Modernizr
+- High performance
+
+].col-50[
+
+  ![html5 boilerplate](assets/img/html5_boilerplate_view.png)
+
+  .center[
+    [http://html5boilerplate.com/](http://html5boilerplate.com/ "http://html5boilerplate.com/")
+  ]
+
+]]
+
+
+---
+
+
+# HTML5 Boilerplate
+
+.center[
+  ![html5 boilerplate](assets/img/html5_boilerplate_code.png)
+]
+
+
+---
+
+
+# Modernizr
+
+.columns[.col-50[
+
+  Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
+
+  - It tests for over 40 next-generation features, all in a matter of milliseconds
+  - It creates a JavaScript object (named Modernizr) that contains the results of these tests as boolean properties
+  - It adds classes to the html element that explain precisely what features are and are not natively supported
+  - It provides a script loader so you can pull in polyfills to backfill functionality in old browsers
+
+].col-50[
+
+  ![modernizr](assets/img/modernizr_view.png)
+
+  .center[
+    [http://modernizr.com/](http://modernizr.com/ "http://modernizr.com/")
+  ]
+
+]]
+
+
+---
+
+
+# Modernizr
+
+
+In javascript:
+
+``` javascript
+
+if (Modernizr.webgl){
+    loadAllWebGLScripts();
+} else {
+    var msg = 'Your browser doesn’t support webgl';
+    document.getElementById( '#notice' ).innerHTML = msg;
+}
+
+```
+
+In HTML:
+
+``` html
+
+<html class="js no-touch postmessage history multiplebgs boxshadow opacity cssanimations csscolumns cssgradients csstransforms csstransitions fontface localstorage sessionstorage svg inlinesvg">
+
+```
+
+
+---
+
+#Emmet
+
+.columns[.col-50[
+
+  Emmet is a plugin for many popular text editors which greatly improves HTML & CSS workflow:
+
+  This line in editor:
+
+  ``` css
+
+    ul.emmet>li*3>a
+
+  ```
+
+  converts to:
+
+  ``` html
+  
+  <ul class="emmet">
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+  </ul>
+
+  ```
+
+].col-50[
+
+  ![Emmet](assets/img/Emmet_view.png)
+
+]]
+
+
+---
+
+#Codekit
+
+
+.columns[.col-40[
+
+  CodeKit helps you build websites faster and better:
+
+  - Compile Everything
+  - Auto-Refresh Browsers
+  - Bower Built-In
+  - It Just Works
+
+].col-60[
+
+  ![Codekit](assets/img/codekit_view.png)
+
+  .center[
+    [https://incident57.com/codekit/](https://incident57.com/codekit/ "https://incident57.com/codekit/")
+  ]
+
+]]
+
+---
+
+#Grunt
+
+
+The JavaScript Task Runner.
+
+.center[
+
+  ![Grunt](assets/img/grunt_view.png)
+
+  [http://gruntjs.com/](http://gruntjs.com/ "http://gruntjs.com/")
+]
+
+
+---
+
+
+#Grunt. Configuration files
+
+.columns[.col-50[
+
+  `package.json`:
+
+  ``` json
+  {
+    "name": "my-project-name",
+    "version": "0.1.0",
+    "devDependencies": {
+      "grunt": "~0.4.5",
+      "grunt-contrib-jshint": "~0.10.0",
+      "grunt-contrib-nodeunit": "~0.3.3",
+      "grunt-contrib-uglify": "~0.4.0"
+    }
+  }
+
+  ```
+
+].col-50[
+
+  `Gruntfile.js`:
+
+  ``` javascript
+
+    module.exports = function(grunt) {
+
+      // Project configuration.
+      grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        uglify: {
+          build: {
+            src: 'src/<%= pkg.name %>.js',
+            dest: 'build/<%= pkg.name %>.min.js'
+          }
+        }
+      });
+
+      // Load the plugin that provides the "uglify" task.
+      grunt.loadNpmTasks('grunt-contrib-uglify');
+
+      // Default task(s).
+      grunt.registerTask('default', ['uglify']);
+    };
+
+  ```
+]]
+
+
+---
+
+
+#Yeoman
+
+.columns[.col-50[
+
+  Yeoman is used to scaffolding workflows for creating modern webapps, while at the same time mixing in many of the best practices that have evolved within the industry.
+
+  - yo scaffolds out a new application, writing your Grunt configuration and pulling in relevant Grunt tasks and Bower dependencies that you might need for your build.
+  - Grunt is used to build, preview and test your project, thanks to help from tasks curated by the Yeoman team and grunt-contrib.
+  - Bower is used for dependency management, so that you no longer have to manually download and manage your scripts.
+
+].col-50[
+
+  ![Yeoman](assets/img/yeoman_view.png)
+
+  .center[
+    [http://yeoman.io/](http://yeoman.io/ "http://yeoman.io/")
+  ]
+]]
+
+---
+
+class: center, middle
+
+.title[
+Programming in Lviv Linux Users Group
+# Thank you for attention. 
+## Any questions???
+]
+
+
+    </textarea>
+<!-- ================== End of Slides ================== -->
+
+    <script src="../assets/js/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">remark.create({highlightStyle: 'github'});</script>
+</body>
+</html>
